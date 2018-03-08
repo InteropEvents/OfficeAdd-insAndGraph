@@ -1,0 +1,267 @@
+name: workshop
+
+description: |
+
+    demo how to use API
+
+author: Kaidali
+
+host: EXCEL
+
+api_set: {}
+
+script:
+
+    content: |
+
+        $("#datachangeevent").click(() => tryCatch(datachangedEvent));
+
+        $("#EnableEvents").click(() => tryCatch(enableEvent));
+
+        $("#DisableEvents").click(() => tryCatch(disableEvent));
+
+        $("#Manualmode").click(() => tryCatch(manualMode));
+
+        $("#Automode").click(() => tryCatch(autoMode));
+
+
+
+        async function datachangedEvent() {
+
+            await Excel.run(async (context) => {
+
+                var sheet2 = context.workbook.worksheets.getItem("Sheet2");
+
+                var event = sheet2.onChanged.add(onDataChanged);
+
+
+
+                await context.sync().then(async (context) => {
+
+                    console.log("success!");});
+
+            });
+
+            function onDataChanged(events) { 
+
+                console.log(JSON.stringify(events));
+
+            }
+
+        }
+
+
+
+
+
+        async function enableEvent() {
+
+            await Excel.run(async (context) => {
+
+
+
+                var runtime = context.runtime;
+
+                runtime.load();
+
+                await context.sync();
+
+                console.log(runtime.enableEvents);
+
+                runtime.enableEvents = true;
+
+                await context.sync().then(async (context) => { 
+
+                    console.log("success: " + runtime.enableEvents);
+
+                });
+
+            });
+
+        }
+
+
+
+        async function disableEvent() {
+
+            await Excel.run(async (context) => {
+
+
+
+                var runtime = context.runtime;
+
+                runtime.load();
+
+                await context.sync();
+
+                console.log(runtime.enableEvents);
+
+                runtime.enableEvents = false;
+
+                await context.sync().then(async (context) => { 
+
+                    console.log("success!");
+
+                });
+
+            });
+
+        }
+
+
+
+        async function manualMode() {
+
+            await Excel.run(async (context) => {
+
+
+
+                context.application.calculationMode = "Manual";
+
+                
+
+
+
+                await context.sync().then(async (context) => { 
+
+                    console.log("success!");
+
+                });
+
+            });
+
+        }
+
+
+
+        async function autoMode() {
+
+            await Excel.run(async (context) => {
+
+
+
+                context.application.calculationMode = "Automatic";
+
+
+
+                await context.sync().then(async (context) => { 
+
+                    console.log("success!");
+
+                });
+
+            });
+
+        }
+
+
+
+        /** Default helper for invoking an action and handling errors. */
+
+        async function tryCatch(callback) {
+
+            try {
+
+                await callback();
+
+            }
+
+            catch (error) {
+
+                OfficeHelpers.UI.notify(error);
+
+                OfficeHelpers.Utilities.log(error);
+
+            }
+
+        }
+
+    language: typescript
+
+template:
+
+    content: |
+
+        <button id="datachangeevent" class="ms-Button">
+
+            <span class="ms-Button-label">RegisterDatachangeEvent</span>
+
+        </button>
+
+        <p></p>
+
+        <button id="EnableEvents" class="ms-Button">
+
+            <span class="ms-Button-label">Enable Events</span>
+
+        </button>
+
+        <p>
+
+        </P>
+
+        <button id="DisableEvents" class="ms-Button">
+
+            <span class="ms-Button-label">Disable Events</span>
+
+        </button>
+
+        <p></P>
+
+
+
+        <button id="Manualmode" class="ms-Button">
+
+            <span class="ms-Button-label">Manual Mode</span>
+
+        </button>
+
+        <p>
+
+        </P>
+
+        <button id="Automode" class="ms-Button">
+
+            <span class="ms-Button-label">Auto Mode</span>
+
+        </button>
+
+    language: html
+
+style:
+
+    content: |
+
+        /* Your style goes here */
+
+    language: css
+
+libraries: |
+
+    https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js
+
+    https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts
+
+
+
+    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
+
+    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+
+
+
+    core-js@2.4.1/client/core.min.js
+
+    @types/core-js
+
+
+
+    @microsoft/office-js-helpers@0.7.4/dist/office.helpers.min.js
+
+    @microsoft/office-js-helpers@0.7.4/dist/office.helpers.d.ts
+
+
+
+    jquery@3.1.1
+
+    @types/jquery
