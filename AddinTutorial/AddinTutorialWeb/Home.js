@@ -30,6 +30,9 @@
 
             // Add a click event handler for the highlight button.
             $('#highlight-button').click(hightlightHighestValue);
+
+            // Add a click event handler for the create chart button.
+            $('#create-chart-button').click(createChart);
         });
     };
 
@@ -99,6 +102,17 @@
                     showNotification('Error', result.error.message);
                 }
             });
+    }
+
+    function createChart() {
+        Excel.run(function (ctx) {
+            var sourceRange = ctx.workbook.getSelectedRange();
+            ctx.workbook.worksheets.getActiveWorksheet().charts.add(Excel.ChartType.pie, sourceRange);
+            return ctx.sync().then(function () {
+                console.log("Chart created");
+            });
+        })
+        .catch(errorHandler);
     }
 
     // Helper function for treating errors
