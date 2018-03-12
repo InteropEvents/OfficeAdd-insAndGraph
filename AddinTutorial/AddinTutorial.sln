@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTutorial", "AddinTutorial\AddinTutorial.csproj", "{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddinTutorialWeb", "AddinTutorialWeb\AddinTutorialWeb.csproj", "{CCF4D797-DFAE-45F8-A62D-7F0DC7841BF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9BFDC81-B0F8-4757-B1F1-A6DA930D68AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CCF4D797-DFAE-45F8-A62D-7F0DC7841BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF4D797-DFAE-45F8-A62D-7F0DC7841BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF4D797-DFAE-45F8-A62D-7F0DC7841BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF4D797-DFAE-45F8-A62D-7F0DC7841BF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB0D6DC9-CB5F-4D6B-A03E-C11B60A59E89}
+	EndGlobalSection
+EndGlobal
