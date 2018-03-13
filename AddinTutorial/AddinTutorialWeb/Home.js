@@ -106,10 +106,17 @@
 
     function createChart() {
         Excel.run(function (ctx) {
-            var sourceRange = ctx.workbook.getSelectedRange();
-            ctx.workbook.worksheets.getActiveWorksheet().charts.add(Excel.ChartType.pie, sourceRange);
+            var sourceRange = ctx.workbook.getSelectedRange().load("rowCount");
             return ctx.sync().then(function () {
-                console.log("Chart created");
+                if (sourceRange.rowCount > 1) {
+                    errorHandler("Selected range contains multiple rows.")
+                    return;
+                }
+
+                ctx.workbook.worksheets.getActiveWorksheet().charts.add(Excel.ChartType.pie, sourceRange);
+                return ctx.sync().then(function () {
+                    console.log("Chart created");
+                });
             });
         })
         .catch(errorHandler);
